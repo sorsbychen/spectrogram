@@ -1,0 +1,146 @@
+Ordering food by Alexa in a smart restaurant
+ 
+ 
+A: alexa. 
+I, II, III: customer 1, 2, 3.
+ 
+ 
+Menu:
+1, Smoked Haddock Fish Cakes
+2, Chicken & Mushroom Risotto
+3, Mushroom Pasta
+4, Roasted Salmon Fillet
+5, Jumbo Hot Dog
+6, Premium Fresh Rib-Eye Steak
+7, Fajita Chicken Wings
+8, House salad
+9, American style burger
+ 
+ 
+Conversations:
+ 
+1, Welcoming 
+1.1 Introduce 
+1.2 Ask drinks
+ 
+2, Ordering 
+2.1 Activate
+2.2 Ask customer’s name / food / additional questions for specific food (i.e. steak)
+2.3 To text: name - food - options
+ 
+3, Finish ordering 
+3.1 Activate
+3.2 Display each customer’s name and food on screen. 
+ 
+4, Answer question 
+4.1 Response to certain questions about menu (e.g. calories, ingredients)
+ 
+5, Comments taking (additional)
+5.1 Activate
+5.2 Ask each customer’s opinion. 
+5.3 Display each customer’s opinion on screen (real time). 
+5.4 Say good bye. 
+A: Welcome to the BP restaurant. My name is Alexa. I am your waiter today.
+Let me tell you about our specials today. We have a miso-glazed Chilean Sea Bass with a side of mashed sweet potatoes and sauteed spinach.
+Can I get you some drink?
+I:Yes, can we have a bottle of sparkling water please?
+A:Ok. A bottle of sparkling water is coming. 
+You can ask me questions about the menu. To order your food, you just need to say “Alexa, start ordering”.
+ 
+I:Alexa, start ordering.
+A: Ok. May I know your name please?
+I:My name is I. 
+A: Hello I. What can I get for you
+I: Can I have the American style burger?
+A: Sure. An American style burger (...) for you.
+ 
+II:Alexa, what is the calories in the mushroom pasta?
+A: Calories per serving of mushroom pasta:
+200 calories of Pasta
+65 calories of Cream of Mushroom Soup.
+In total 265 calories.
+ 
+ 
+II: Alexa, start ordering.
+A:Ok. May I know your name please?
+II:My name is II.
+A:Hello II. What can I get for you?
+II: May I have a mushroom pasta ?
+A: Sure. A mushroom pasta for II.
+ 
+III:Alexa, start ordering.
+A:Ok, May I know your name please?
+III:My name is III.
+A:Hello III, what can I get for you?
+III:I would like to have a Premium Fresh Rib-Eye Steak.
+A:Ok. A Premium Fresh Rib-Eye Steak for III. 
+III, how do you like your steak done?
+III:Medium. 
+A:Ok. Medium it is. 
+ 
+III:Alexa, we have finished our order. 
+A:Good choices. Your food will be ready in 10 minutes.
+ 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Additional: Comment taking
+I:Alexa, can we have the bill please?
+A:Sure. The bill is on its way. 
+Before paying, you can leave your comments to me. 
+I, how do you like your American style burger?
+I:I like it! ……..
+A:Thanks you. Would you like to leave other comments?
+I:No.
+A:Thank you I. 
+ 
+A:II, how do you like your mushroom pasta?
+II:The mushroom pasta is good. But it is so big that I can’t finish it. …....
+A: Thanks you. Would you like to leave other comments?
+II:No.
+A:Thank you II. 
+ 
+A:III, how do you like your Premium Fresh Rib-Eye Steak?
+III:It is excellent. I ate all of it. …...
+A:Thank you. Would you like to leave other comments?
+III:No. 
+A:
+Thank you. I am delighted to serve you today. Hope to see you next time! Bye!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ 
+Modules:
+Activation: to start a specific conversation (ordering, finish ordering, comments taking)
+Text -> Voice (all)
+Voice -> Text (Introduction, finish ordering, comments tasking)
+Connect to laptop to display text on screen
+Search answer for question
+ 
+Business
+The average hourly wage of London waiter is GBP 6.82; and price of Echo Dot is GBP 49.99. If a restaurant can save one labor putting one Echo Dot on the table, 8 working hours (one day) will be more than enough to recover the cost. If a restaurant has 8 waiters and an Echo Dot can improve 1 hour’s working efficiency, one day will also be more than enough to recover the cost. Generally, Echo Dot can significantly help restaurants save money, and the speed to recover the investment will be very quick.
+ 
+When we account how a waiter spend their service time, we can find the waiter spend ⅔ of their time serving customers ordering food and paying bills. If this part of time can saved or efficiency can be improved, a waiter can have higher capacity to serve customers.
+ 
+We assume a group of customers spend 40 minutes having dinner,20 minutes waiting food, and 20 minutes ordering food and paying bills. If we can use this function to save 15 minutes for each table, the restaurant may be able to serve one more round of customers during dinner time.
+ 
+Customer Satisfaction rate can be improved. For top 9 factors influencing restaurant customer satisfaction, this function of Echo Dot can contribute to 4 points: Waiting times, Promptness of service, Professionalism and friendliness of server(s), and Server’s knowledge of menu. 
+http://www.infosurv.com/restaurant-customer-satisfaction-survey/
+ 
+Echo Dot can immediately respond when customers are in need, and send their request to the kitchen or front desk promptly and clearly. Also, Echo Dot knows each dish very well and can patiently explain to customers in a very professional way with standard high quality. As service quality and customer satisfaction improve, the restaurant can enjoy a better world-of-mouth and attract more customers.
+ 
+Echo Dot can record customers’ favors, i.e. whether how many of them are on diet; what percentage of them like spicy food and non-spicy food; and what food is the most popular and how it change in time (lunch or dinner) and in seasons. Thus, the restaurant can better understand their customers, develop a menu tailor to their tastes, prepare enough ingredients to meet demands.
+ 
+Compared with Echo Dot’s previous target consumers: households, restaurants have more intensive and clear demand:
+This function can help restaurants improve their efficiency and save labor costs.
+As restaurant’s efficiency improves, it can serve more customer during peak hours and enjoy the increase in revenue.
+Customer satisfaction can be improved. This can help the restaurant attract more customers in the long run.
+Better management and future menu development.
+ 
+There are 72,794 restaurants in UK in 2015; and if we assume each restaurant has 20 tables on average, there will be 1,455,880 tables being able to put Echo Dots. This app can help Amazon dramatically increase Echo Dots’ sales. If Amazon tap into food and beverage industry in other parts of world, this new functions can create millions of new sales. https://www.statista.com/statistics/298871/number-of-restaurants-in-the-united-kingdom/
+ 
+The data of what consumers order is very valuable for big data analysis.  
+ 
+ 
+ 
+ 
+ 
+ 
