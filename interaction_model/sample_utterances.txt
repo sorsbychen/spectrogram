@@ -1,4 +1,3 @@
-MyColorIsIntent my favorite color is {Color}
 WhatsMyColorIntent what's my favorite color
 WhatsMyColorIntent what is my favorite color
 WhatsMyColorIntent what's my color
@@ -15,3 +14,7 @@ WhatsMyColorIntent yes
 WhatsMyColorIntent yup
 WhatsMyColorIntent sure
 WhatsMyColorIntent yes please
+StartOrderIntent Alexa,start ordering
+MyNameIsIntent My name is {Name}
+MyNameIsIntent I am {Name}
+MyNameIsIntent This is {Name}

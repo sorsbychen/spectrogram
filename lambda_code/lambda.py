@@ -50,13 +50,13 @@ def get_welcome_response():
 
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Welcome to the Alexa Skills Kit sample. " \
-                    "Please tell me your favorite color by saying, " \
-                    "my favorite color is red"
+    speech_output = "Welcome to the BP restaurant. My name is Alexa. "\
+    				"I am your waiter today. Let me tell you about our specials today."\
+    				" We have a miso-glazed Chilean Sea Bass, with a side of mashed sweet potatoes, and sauteed spinach."\
+    				"You can ask me questions about the menu. To order your food, you just need to say, Alexa, start ordering."
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Please tell me your favorite color by saying, " \
-                    "my favorite color is red."
+    reprompt_text = speech_output
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
@@ -74,6 +74,23 @@ def handle_session_end_request():
 
 def create_favorite_color_attributes(favorite_color):
     return {"favoriteColor": favorite_color}
+
+
+def set_usr_in_session(intent, session):
+
+    card_title = intent['name']
+    session_attributes = {}
+    should_end_session = False
+
+    usr_name = intent['slots']['name']['value']
+    speech_output = "Hello" + \
+                        usr_name + \
+                        ". What can get for you?" 
+
+    reprompt_text = speech_output
+
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
 
 
 def set_color_in_session(intent, session):
@@ -102,6 +119,24 @@ def set_color_in_session(intent, session):
                         "my favorite color is red."
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
+
+
+def start_order_session(intent, session):
+    """ Start ordering
+    """
+
+    card_title = intent['name']
+    session_attributes = {}
+    should_end_session = False
+
+
+    speech_output = "May I have your name please?"
+    reprompt_text = 'Sorry, I cannot understand your speech'
+
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+
 
 
 def get_color_from_session(intent, session):
@@ -155,14 +190,10 @@ def on_intent(intent_request, session):
     intent_name = intent_request['intent']['name']
 
     # Dispatch to your skill's intent handlers
-    if intent_name == "MyColorIsIntent":
-        return set_color_in_session(intent, session)
-    elif intent_name == "WhatsMyColorIntent":
-        return get_color_from_session(intent, session)
-    elif intent_name == "AMAZON.HelpIntent":
-        return get_welcome_response()
-    elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
-        return handle_session_end_request()
+    if intent_name == "StartOrderIntent":
+        return start_order_session(intent, session)
+    elif intent_name == "MyNameIsIntent":
+    	return set_usr_in_session(intent, session)
     else:
         raise ValueError("Invalid intent")
 

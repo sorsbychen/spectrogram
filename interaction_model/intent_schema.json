@@ -3,17 +3,16 @@
     {
       "slots": [
         {
-          "name": "Color",
-          "type": "LIST_OF_COLORS"
+          "name": "Name",
         }
       ],
-      "intent": "MyColorIsIntent"
-    },
-    {
-      "intent": "WhatsMyColorIntent"
+      "intent": "MyNameIsIntent"
     },
     {
       "intent": "AMAZON.HelpIntent"
-    }
+    },
+    {
+      "intent": "StartOrderIntent"
+    },
   ]
 }
