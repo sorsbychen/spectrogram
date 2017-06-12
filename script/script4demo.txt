@@ -54,12 +54,29 @@ A: Hello I. What can I get for you
 I: Can I have the American style burger?
 A: Sure. An American style burger (...) for you.
  
+Sample_utterances:
+I'm 
+I am
+My name is 
+My name's 
+ 
+Can I have {food}
+May I have {food}
+I’d like to have {food}
+I would like to have {food}
+{food}
+ 
 II:Alexa, what is the calories in the mushroom pasta?
 A: Calories per serving of mushroom pasta:
 200 calories of Pasta
 65 calories of Cream of Mushroom Soup.
 In total 265 calories.
  
+Sample_utterances:
+what is the calories in {food}
+how much calories is it in {food}
+how many calories in {food}
+how much heat is it in {food}
  
 II: Alexa, start ordering.
 A:Ok. May I know your name please?
@@ -77,6 +94,29 @@ A:Ok. A Premium Fresh Rib-Eye Steak for III.
 III, how do you like your steak done?
 III:Medium. 
 A:Ok. Medium it is. 
+ 
+Custom_slot_types:
+blue
+blue rare
+rare
+medium rare
+medium
+medium well
+well
+well-done
+ 
+Sample_utterances:
+{darkness of steak}
+I would like to have {darkness of steak}
+I'd like to have {darkness of steak}
+I like it to be {darkness of steak}
+I'd like it to be {darkness of steak}
+I would like it to be {darkness of steak}
+I like {darkness of steak}
+I'd like {darkness of steak}
+I would like {darkness of steak}
+I want {darkness of steak}
+ 
  
 III:Alexa, we have finished our order. 
 A:Good choices. Your food will be ready in 10 minutes.
@@ -122,12 +162,16 @@ When we account how a waiter spend their service time, we can find the waiter sp
  
 We assume a group of customers spend 40 minutes having dinner,20 minutes waiting food, and 20 minutes ordering food and paying bills. If we can use this function to save 15 minutes for each table, the restaurant may be able to serve one more round of customers during dinner time.
  
+For some restaurants in London, e.g. some Chinese restaurants, waiters there cannot speak fluent English explaining dishes and specials to customers. Also, there are are great number of tourists visiting London every year. Echo Dot can talk with customers in the language they prefer.
+ 
 Customer Satisfaction rate can be improved. For top 9 factors influencing restaurant customer satisfaction, this function of Echo Dot can contribute to 4 points: Waiting times, Promptness of service, Professionalism and friendliness of server(s), and Server’s knowledge of menu. 
 http://www.infosurv.com/restaurant-customer-satisfaction-survey/
  
 Echo Dot can immediately respond when customers are in need, and send their request to the kitchen or front desk promptly and clearly. Also, Echo Dot knows each dish very well and can patiently explain to customers in a very professional way with standard high quality. As service quality and customer satisfaction improve, the restaurant can enjoy a better world-of-mouth and attract more customers.
  
 Echo Dot can record customers’ favors, i.e. whether how many of them are on diet; what percentage of them like spicy food and non-spicy food; and what food is the most popular and how it change in time (lunch or dinner) and in seasons. Thus, the restaurant can better understand their customers, develop a menu tailor to their tastes, prepare enough ingredients to meet demands.
+ 
+Feedback collection
  
 Compared with Echo Dot’s previous target consumers: households, restaurants have more intensive and clear demand:
 This function can help restaurants improve their efficiency and save labor costs.
@@ -137,8 +181,19 @@ Better management and future menu development.
  
 There are 72,794 restaurants in UK in 2015; and if we assume each restaurant has 20 tables on average, there will be 1,455,880 tables being able to put Echo Dots. This app can help Amazon dramatically increase Echo Dots’ sales. If Amazon tap into food and beverage industry in other parts of world, this new functions can create millions of new sales. https://www.statista.com/statistics/298871/number-of-restaurants-in-the-united-kingdom/
  
-The data of what consumers order is very valuable for big data analysis.  
+The data of what consumers order can be collected for big data analysis.  
  
+Smart Home: Echo Dot can control private dining rooms’ A/C, light and music
+ 
+Interview:
+A korean food restaurant manager: Andy
+⅓ of waiters’ working time is working on ordering food and paying bills.
+5 min on average for food ordering
+Our product can help to improve service quality.
+ 
+The restaurant: 15 tables, hires extra labors during peak hour.
+ 
+What I observe: three japanese customers were struggling to order their dinner, as their English was not good enough to understand what the waiter was saying. In this case, Andy said a waiter would spend round 7 or 8 minutes helping customer to order food but leave other customer unserved. 
  
  
  
