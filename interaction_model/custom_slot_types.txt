@@ -1,4 +1,5 @@
-LIST_OF_NAMES
+1. 
+LIST_OF_NAMES:
 David
 hellen
 Wei
@@ -8,32 +9,44 @@ Sorsby
 Bert
 Xiaofei
 
-LIST_OF_ORDER
+
+LIST_OF_ORDER:
+Smoked Haddock Fish Cakes
+Chicken-and-Mushroom-Risotto
+Mushroom Pasta
+Roasted Salmon Fillet
+Jumbo Hot Dog
+Premium Fresh Rib-Eye Steak
+Fajita Chicken Wings
+House salad
+American style burger
 miso-glazed Chilean Sea Bass
 Sea Bass
 Chilean Sea Bass
-Smoked Haddock Fish Cakes
 Fish Cakes
-Chicken and Mushroom Risotto
 Risotto
-Mushroom Pasta
 Pasta
-Roasted Salmon Fillet
 Salmon Fillet
-Jumbo Hot Dog
 Hot Dog
-Premium Fresh Rib Eye Steak
-Rib Eye Steak
+rib eye Steak
 Steak
-Fajita Chicken Wings
 Chicken Wings
-House salad
 salad
-American style burger
 burger
 
-LIST_OF_COOK
-Low
-Medium
-High
-Fresh
+
+
+LIST_OF_COOK:
+high
+low
+fresh
+blue
+blue rare
+rare
+medium rare
+medium
+medium well
+well
+well-done
+
+2.
