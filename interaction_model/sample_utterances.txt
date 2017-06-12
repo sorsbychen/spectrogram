@@ -1,20 +1,12 @@
-WhatsMyColorIntent what's my favorite color
-WhatsMyColorIntent what is my favorite color
-WhatsMyColorIntent what's my color
-WhatsMyColorIntent what is my color
-WhatsMyColorIntent my color
-WhatsMyColorIntent my favorite color
-WhatsMyColorIntent get my color
-WhatsMyColorIntent get my favorite color
-WhatsMyColorIntent give me my favorite color
-WhatsMyColorIntent give me my color
-WhatsMyColorIntent what my color is
-WhatsMyColorIntent what my favorite color is
-WhatsMyColorIntent yes
-WhatsMyColorIntent yup
-WhatsMyColorIntent sure
-WhatsMyColorIntent yes please
-StartOrderIntent Alexa,start ordering
+MakeOrderIntent Can I have a {Food}
+MakeOrderIntent Could I have the {Food}
+MakeOrderIntent I would like a {Food}
 MyNameIsIntent My name is {Name}
 MyNameIsIntent I am {Name}
 MyNameIsIntent This is {Name}
+StartOrderIntent Start ordering
+QueryIntent What is the calories in {Food}
+QueryIntent How much is the calories in {Food}
+SteakIntent I want it {SteakValue}
+SteakIntent {SteakValue}
+FinishIntent We have finished our order

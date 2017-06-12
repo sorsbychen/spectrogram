@@ -4,6 +4,7 @@
       "slots": [
         {
           "name": "Name",
+          "type": "LIST_OF_NAMES"
         }
       ],
       "intent": "MyNameIsIntent"
@@ -14,5 +15,35 @@
     {
       "intent": "StartOrderIntent"
     },
+    {
+      "intent": "FinishIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "Food",
+          "type": "LIST_OF_ORDER"
+        }
+      ],
+      "intent": "MakeOrderIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "Food",
+          "type": "LIST_OF_ORDER"
+        }
+      ],
+      "intent": "QueryIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "SteakValue",
+          "type": "LIST_OF_COOK"
+        }
+      ],
+      "intent": "SteakIntent"
+    }
   ]
 }

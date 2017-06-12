@@ -1,15 +1,41 @@
 1.
 Enter Type:
-LIST_OF_COLORS
+LIST_OF_NAMES
 Enter Values:
-green
-red
-blue
-orange
-gold
-silver
-yellow
+David
+hellen
+Wei
+Bidan
+Hui
+Sorsby
+Bert
+
+
+miso-glazed Chilean Sea Bass
+Sea Bass
+Chilean Sea Bass
+Smoked Haddock Fish Cakes
+Fish Cakes
+Chicken and Mushroom Risotto
+Risotto
+Mushroom Pasta
+Pasta
+Roasted Salmon Fillet
+Salmon Fillet
+Jumbo Hot Dog
+Hot Dog
+Premium Fresh Rib-Eye Steak
+rib eye Steak
+Steak
+Fajita Chicken Wings
+Chicken Wings
+House salad
+salad
+American style burger
+burger
+
 black
 white
+miso-glazed Chilean Sea Bass
 
 2.
