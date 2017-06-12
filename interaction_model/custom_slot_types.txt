@@ -1,7 +1,4 @@
-1.
-Enter Type:
 LIST_OF_NAMES
-Enter Values:
 David
 hellen
 Wei
@@ -9,8 +6,9 @@ Bidan
 Hui
 Sorsby
 Bert
+Xiaofei
 
-
+LIST_OF_ORDER
 miso-glazed Chilean Sea Bass
 Sea Bass
 Chilean Sea Bass
@@ -24,8 +22,8 @@ Roasted Salmon Fillet
 Salmon Fillet
 Jumbo Hot Dog
 Hot Dog
-Premium Fresh Rib-Eye Steak
-rib eye Steak
+Premium Fresh Rib Eye Steak
+Rib Eye Steak
 Steak
 Fajita Chicken Wings
 Chicken Wings
@@ -34,8 +32,8 @@ salad
 American style burger
 burger
 
-black
-white
-miso-glazed Chilean Sea Bass
-
-2.
+LIST_OF_COOK
+Low
+Medium
+High
+Fresh
