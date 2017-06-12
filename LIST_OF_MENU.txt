@@ -1,0 +1,9 @@
+1, Smoked Haddock Fish Cakes
+2, Chicken and Mushroom Risotto
+3, Mushroom Pasta
+4, Roasted Salmon Fillet
+5, Jumbo Hot Dog
+6, Premium Fresh Rib-Eye Steak
+7, Fajita Chicken Wings
+8, House salad
+9, American style burger

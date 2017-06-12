@@ -1,0 +1,63 @@
+ MyNameIsIntent
+ MyOrderIntent
+ if have name, start
+ if no name, copy order, ask name
+ FinishOrderIntent
+ Display each customer’s name and food on screen
+ 
+ 
+ 
+ 
+{
+  "intents": [
+    {
+      "intent": "WelcomeIntent",
+    },
+	{
+      "intent": "RecommendationIntent",
+    },
+	{
+      "intent": "AskDrinksIntent",
+    },
+    {
+      "intent": "MyNameIsIntent",
+      "slots": [
+        {
+          "name": "Name",
+          "type": "AMAZON.DE_FIRST_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "MyOrderIntent",
+	  "slots": [
+        {
+          "name": "Menu",
+          "type": "LIST_OF_MENU"
+        }
+      ]
+    },
+	{
+      "intent": "FinishOrderIntent",
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
+
+
+MyNameIsIntent My name is {Name}
+MyNameIsIntent I am {Name}
+MyNameIsIntent {Name}
+MyOrderIntent Can I have {Menu}
+MyOrderIntent {Menu} please
+MyOrderIntent {Menu}
+MyOrderIntent I would like to have {Menu}
+RecommendationIntent yes
+RecommendationIntent yup
+RecommendationIntent sure
+RecommendationIntent yes please
+RecommendationIntent OK
+FinishOrderIntent that is all Thanks
+AskDrinksIntent {Drinks}
