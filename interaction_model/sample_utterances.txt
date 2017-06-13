@@ -10,7 +10,7 @@ MyNameIsIntent I am {Name}
 MyNameIsIntent This is {Name}
 MyNameIsIntent I'm {Name}
 MyNameIsIntent My name's {Name}
- 
+MyNameIsIntent {Name}
 
 StartOrderIntent Start ordering
 
