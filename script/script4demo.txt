@@ -7,14 +7,29 @@ I, II, III: customer 1, 2, 3.
  
 Menu:
 1, Smoked Haddock Fish Cakes
+There are 155 calories in a 1 cake serving of  Smoked Haddock Fish Cakes
 2, Chicken & Mushroom Risotto
+Calories per serving of Chicken and mushroom risotto are
+150 calories of risotto
+137 calories of Chicken Breast 
+In total 287 calories.
 3, Mushroom Pasta
+Calories per serving of Mushroom Pasta are
+200 calories of Pasta
+65 calories of Cream of Mushroom Soup.
+In total 265 calories.
 4, Roasted Salmon Fillet
+There are 157 calories in each serving of the Roasted Salmon Fillet
 5, Jumbo Hot Dog
+There are 240 calories in each serving of Jumbo Hot Dog
 6, Premium Fresh Rib-Eye Steak
+There are 585 calories in each serving of the premium fresh rib-eye steak
 7, Fajita Chicken Wings
+There are 430 calories in each serving of the Fajita Chicken Wings
 8, House salad
+There are 40 calories in each serving of the house salad
 9, American style burger
+There are 255 calories in each serving of the american style burger
  
  
 Conversations:
@@ -194,6 +209,13 @@ Our product can help to improve service quality.
 The restaurant: 15 tables, hires extra labors during peak hour.
  
 What I observe: three japanese customers were struggling to order their dinner, as their English was not good enough to understand what the waiter was saying. In this case, Andy said a waiter would spend round 7 or 8 minutes helping customer to order food but leave other customer unserved. 
+ 
+Hozi Korean Food restaurant: Manager - Peter
+40% of waiters’ working time is on ordering food and paying bills
+As he is not good at English, he may spend more than 10 min explaining the menu to his customer
+He hires extra workers during peak hours
+Due to insufficient numbers of waiter, it is very common letting customers wait for other tables. They can only server the tables one-by-one. 
+24 tables in the restaurant.
  
  
  
