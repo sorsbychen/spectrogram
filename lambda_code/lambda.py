@@ -7,9 +7,9 @@ For additional samples, visit the Alexa Skills Kit Getting Started guide at
 http://amzn.to/1LGWsLG
 """
 
-import urllib2
-from __future__ import print_function
 
+from __future__ import print_function
+import urllib2
 
 menu = ['Smoked Haddock Fish Cakes',
         'Chicken & Mushroom Risotto',
@@ -27,6 +27,7 @@ def make_order(table, name, order, remark):
     order = order.replace(' ','%20')
     remark = remark.replace(' ','%20')
     response = urllib2.urlopen('http://183.175.14.209:6228/order/%s/%s/%s/%s/'%(table, name, order, remark))  
+
 
 
 # --------------- Helpers that build all of the responses ----------------------
@@ -67,7 +68,7 @@ def get_welcome_response():
     add those here
     """
 
-    session_attributes = {'status':0,'usr':'xxxx','order':'xxxx'}
+    session_attributes = {'status':0,'info':[],'usr':'xxx','order':'xxx'}
     card_title = "Welcome"
     speech_output = "Welcome to the BP restaurant. My name is Alexa. "\
                     "I am your waiter today. Let me tell you about our specials today. "\
@@ -94,7 +95,7 @@ def set_usr_in_session(intent, session):
     should_end_session = False
 
     usr_name_str = intent['slots']['Name']['value']
-    speech_output = "Hello," + usr_name_str + ". What can get for you?" 
+    speech_output = "Hello," + usr_name_str + ". What can get for you?"     
     session_attributes['usr'] = usr_name_str
 
     reprompt_text = speech_output
@@ -111,12 +112,15 @@ def set_order_in_session(intent, session):
     should_end_session = False
 
     order_name_str = intent['slots']['Food']['value']
-    speech_output = "Sure, a " + order_name_str + " for " + session_attributes['usr']
-    if 'steak' in order_name_str or 'Steak' in order_name_str:
-        speech_output = speech_output + '. Hi, '+ session_attributes['usr'] + ', how do you like your steak done?'
-        session_attributes['status'] = -3        
+    usr_name_str = session_attributes['usr']
     session_attributes['order'] = order_name_str
-    
+    session_attributes['info'].append([usr_name_str,order_name_str])
+
+    speech_output = "Sure, a " + order_name_str + " for " + usr_name_str
+    if 'steak' in order_name_str or 'Steak' in order_name_str:
+        speech_output = speech_output + '. Hi, '+ usr_name_str + ', how do you like your steak done?'
+        session_attributes['status'] = -3        
+
     make_order('01', session_attributes['usr'], session_attributes['order'], '')
 
     reprompt_text = 'sorry I cannot recognize you.'
@@ -200,6 +204,28 @@ def on_session_started(session_started_request, session):
     print("on_session_started requestId=" + session_started_request['requestId']
           + ", sessionId=" + session['sessionId'])
 
+def handle_order_end_request(intent, session):
+    card_title = "Order Ended"
+    speech_output = "Good choices. Your food will be ready in 10 minutes."
+    session_attributes = session['attributes']
+    session_attributes['status'] = 0
+
+    # Setting this to true ends the session and exits the skill.
+    should_end_session = False
+    return build_response({}, build_speechlet_response(
+        card_title, speech_output, None, should_end_session))
+
+def pay_session(intent, session):
+    card_title = "Pay"
+    speech_output = 'Sure. The bill is on its way. Before paying, you can leave your comments to me.'
+    session_attributes = session['attributes']
+    session_attributes['status'] = 0
+
+    # Setting this to true ends the session and exits the skill.
+    should_end_session = False
+    return build_response({}, build_speechlet_response(
+        card_title, speech_output, None, should_end_session))    
+
 
 def handle_session_end_request(intent, session):
     card_title = "Session Ended"
@@ -244,7 +270,9 @@ def on_intent(intent_request, session):
         if  intent_name == "QueryIntent":
             return reply_query_session(intent, session)
         if  intent_name == "FinishIntent":
-            return handle_session_end_request(intent, session)
+            return handle_order_end_request(intent, session)
+        if  intent_name == "PayIntent":
+            return pay_session(intent, session)
 
         if session_attributes['status'] == 1: # after start ordering
             if intent_name == 'StartOrderIntent':
