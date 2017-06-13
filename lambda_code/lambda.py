@@ -7,10 +7,21 @@ For additional samples, visit the Alexa Skills Kit Getting Started guide at
 http://amzn.to/1LGWsLG
 """
 
+import urllib2
 from __future__ import print_function
 
 
-import urllib2
+menu = ['Smoked Haddock Fish Cakes',
+        'Chicken & Mushroom Risotto',
+        'Mushroom Pasta',
+        'Roasted Salmon Fillet',
+        'Jumbo Hot Dog',
+        'Premium Fresh Rib-Eye Steak',
+        'Fajita Chicken Wings',
+        'House salad',
+        'American style burger']
+
+
 def make_order(table, name, order, remark):
     name = name.replace(' ','%20')
     order = order.replace(' ','%20')
