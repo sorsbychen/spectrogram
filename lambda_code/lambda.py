@@ -10,6 +10,14 @@ http://amzn.to/1LGWsLG
 from __future__ import print_function
 
 
+import urllib2
+def make_order(table, name, order, remark):
+    name = name.replace(' ','%20')
+    order = order.replace(' ','%20')
+    remark = remark.replace(' ','%20')
+    response = urllib2.urlopen('http://183.175.14.209:6228/order/%s/%s/%s/%s/'%(table, name, order, remark))  
+
+
 # --------------- Helpers that build all of the responses ----------------------
 
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
@@ -97,6 +105,8 @@ def set_order_in_session(intent, session):
         speech_output = speech_output + '. Hi, '+ session_attributes['usr'] + ', how do you like your steak done?'
         session_attributes['status'] = -3        
     session_attributes['order'] = order_name_str
+    
+    make_order('01', session_attributes['usr'], session_attributes['order'], '')
 
     reprompt_text = 'sorry I cannot recognize you.'
 
