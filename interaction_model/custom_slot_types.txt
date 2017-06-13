@@ -9,6 +9,59 @@ Sorsby
 Bert
 Xiaofei
 
+LIST_OF_COOK:
+high
+low
+fresh
+blue
+blue rare
+rare
+medium rare
+medium
+medium well
+well
+well-done
+
+2. CaloriesDictionary
+    CaloriesOfFood={
+        	"smoked haddock fish cakes": "There are 155 calories in a 1 cake serving of  Smoked Haddock Fish Cakes",
+        	"chicken and mushroom risotto": "Calories per serving of Chicken and mushroom risotto are 150 calories of risotto 137 calories of Chicken Breast. In total 287 calories.",
+        	"mushroom pasta": "Calories per serving of Mushroom Pasta are 200 calories of Pasta 65 calories of Cream of Mushroom Soup. In total 265 calories.",
+        	"roasted salmon fillet": "There are 157 calories in each serving of the Roasted Salmon Fillet.",
+        	"jumbo hot dog": "There are 240 calories in each serving of Jumbo Hot Dog",
+        	"premium fresh rib-eye steak": "There are 585 calories in each serving of the premium fresh rib-eye steak",
+        	"fajita chicken wings": "There are 430 calories in each serving of the Fajita Chicken Wings",
+        	"house salad": "There are 40 calories in each serving of the house salad",
+        	"american style burger": "There are 255 calories in each serving of the american style burger"
+    }
+	
+
+
+3 no use any more
+    CaloriesOfFood={
+        "Smoked Haddock Fish Cakes":11,
+        "Chicken-and-Mushroom-Risotto":11,
+        "Mushroom Pasta":11,
+        "Roasted Salmon Fillet":11,
+        "Jumbo Hot Dog":11,
+        "Premium Fresh Rib-Eye Steak":11,
+        "Fajita Chicken Wings":11,
+        "House salad":11,
+        "American style burger":11,
+        "miso-glazed Chilean Sea Bass":11,
+        "Sea Bass":11,
+        "Chilean Sea Bass":11,
+        "Fish Cakes":11,
+        "Risotto":11,
+        "Pasta":11,
+        "Salmon Fillet":11,
+        "Hot Dog":11,
+        "rib eye Steak":11,
+        "Steak":11,
+        "Chicken Wings":11,
+        "salad":11,
+        "burger":11
+    }
 
 LIST_OF_ORDER:
 Smoked Haddock Fish Cakes
@@ -33,20 +86,3 @@ Steak
 Chicken Wings
 salad
 burger
-
-
-
-LIST_OF_COOK:
-high
-low
-fresh
-blue
-blue rare
-rare
-medium rare
-medium
-medium well
-well
-well-done
-
-2.
