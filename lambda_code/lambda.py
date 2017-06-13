@@ -8,7 +8,6 @@ http://amzn.to/1LGWsLG
 """
 
 import urllib2
-from urllib import urlencode
 from __future__ import print_function
 
 
@@ -24,10 +23,10 @@ menu = ['Smoked Haddock Fish Cakes',
 
 
 def make_order(table, name, order, remark):
-    response = urllib2.urlopen('http://183.175.14.209:6228/order/%s/%s/%s/%s/'%(urlencode(table), 
-                                                                                urlencode(name), 
-                                                                                urlencode(order), 
-                                                                                urlencode(remark)))  
+    name = name.replace(' ','%20')
+    order = order.replace(' ','%20')
+    remark = remark.replace(' ','%20')
+    response = urllib2.urlopen('http://183.175.14.209:6228/order/%s/%s/%s/%s/'%(table, name, order, remark))  
 
 
 # --------------- Helpers that build all of the responses ----------------------
