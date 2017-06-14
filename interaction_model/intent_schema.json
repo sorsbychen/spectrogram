@@ -19,6 +19,9 @@
       "intent": "FinishIntent"
     },
     {
+      "intent": "PayIntent"
+    },
+    {
       "slots": [
         {
           "name": "Food",
@@ -44,6 +47,15 @@
         }
       ],
       "intent": "SteakIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "commentStr",
+          "type": "LIST_OF_COMMENT"
+        }
+      ],
+      "intent": "CommentIntent"
     }
   ]
 }

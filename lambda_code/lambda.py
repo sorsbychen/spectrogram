@@ -68,7 +68,7 @@ def get_welcome_response():
     add those here
     """
 
-    session_attributes = {'status':0,'info':[],'usr':'xxx','order':'xxx'}
+    session_attributes = {'status':'init','info':[],'usr':'xxx','order':'xxx','comment_id':0,'comment_end':0}
     card_title = "Welcome"
     speech_output = "Welcome to the BP restaurant. My name is Alexa. "\
                     "I am your waiter today. Let me tell you about our specials today. "\
@@ -90,7 +90,7 @@ def set_usr_in_session(intent, session):
 
     card_title = intent['name']
     session_attributes = session['attributes']
-    session_attributes['status'] = 2
+    session_attributes['status'] = 'wait_for_order'
 
     should_end_session = False
 
@@ -107,7 +107,7 @@ def set_order_in_session(intent, session):
 
     card_title = intent['name']
     session_attributes = session['attributes']
-    session_attributes['status'] = 3
+    session_attributes['status'] = 'order_set'
 
     should_end_session = False
 
@@ -119,7 +119,7 @@ def set_order_in_session(intent, session):
     speech_output = "Sure, a " + order_name_str + " for " + usr_name_str
     if 'steak' in order_name_str or 'Steak' in order_name_str:
         speech_output = speech_output + '. Hi, '+ usr_name_str + ', how do you like your steak done?'
-        session_attributes['status'] = -3        
+        session_attributes['status'] = 'for_steak'        
 
     make_order('01', session_attributes['usr'], session_attributes['order'], '')
 
@@ -132,7 +132,7 @@ def set_steak_in_session(intent, session):
 
     card_title = intent['name']
     session_attributes = session['attributes']
-    session_attributes['status'] = 3
+    session_attributes['status'] = 'order_set'
 
     should_end_session = False
 
@@ -147,17 +147,15 @@ def set_steak_in_session(intent, session):
 def start_order_session(intent, session):
     """ Start ordering
     """
-
     card_title = intent['name']
     session_attributes = session['attributes']
-    session_attributes['status'] = 1
-
     should_end_session = False
 
 
     speech_output = "Thank you. May I have your name please?"
     reprompt_text = 'Sorry, I cannot understand your speech.'
 
+    session_attributes['status'] = 'wait_for_name'
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
@@ -165,7 +163,7 @@ def start_order_session(intent, session):
 def fail_session(intent, session):
 
     card_title = intent['name']
-
+    session_attributes = session['attributes']
     should_end_session = False
 
 
@@ -208,30 +206,58 @@ def handle_order_end_request(intent, session):
     card_title = "Order Ended"
     speech_output = "Good choices. Your food will be ready in 10 minutes."
     session_attributes = session['attributes']
-    session_attributes['status'] = 0
+    session_attributes['status'] = 'init'
 
     # Setting this to true ends the session and exits the skill.
     should_end_session = False
-    return build_response({}, build_speechlet_response(
+    return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
 
 def pay_session(intent, session):
     card_title = "Pay"
     speech_output = 'Sure. The bill is on its way. Before paying, you can leave your comments to me.'
+
     session_attributes = session['attributes']
-    session_attributes['status'] = 0
+    session_attributes['comment_id'] = 0
+    session_attributes['status'] = 'in_comment'
+    info_all = session_attributes['info']
+    speech_output = speech_output + session_attributes['info'][0][1] + ', How do you like your ' + session_attributes['info'][0][1] + '?'
+    # session_attributes['comment_id'] = session_attributes['comment_id']+1
 
     # Setting this to true ends the session and exits the skill.
     should_end_session = False
-    return build_response({}, build_speechlet_response(
+    return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, None, should_end_session))    
 
+def comment_session(intent,session):
+    card_title = "Comment"
+    speech_output = 'En. '
+    session_attributes = session['attributes']
+    comment_str = intent['slots']['commentStr']['value']
+    should_end_session = False
+
+    if comment_str == 'no':
+        speech_output = 'Thank you '+session_attributes['info'][session_attributes['comment_id']][0] + '. '
+        session_attributes['comment_id'] = session_attributes['comment_id']+1
+        if session_attributes['comment_id'] < len(session_attributes['info']):            
+            speech_output = speech_output+ session_attributes['info'][session_attributes['comment_id']][0]+', How do you like your ' + session_attributes['info'][session_attributes['comment_id']][1] + '?'
+        else:
+            speech_output = 'You have finished all the comments. Your total bill is 128 pounds. Please swipe the card.                . I am delighted to serve you today. Hope to see you next time! Bye!'
+            should_end_session = True
+    else:
+        speech_output = 'Thank you. Do you have more comments?'
+        
+
+    reprompt_text = 'Sorry, I cannot understand your speech.'
+    
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
 
 def handle_session_end_request(intent, session):
     card_title = "Session Ended"
     speech_output = "Good choices. Your food will be ready in 10 minutes."
     session_attributes = session['attributes']
-    session_attributes['status'] = 0
+    session_attributes['status'] = 'init'
 
     # Setting this to true ends the session and exits the skill.
     should_end_session = True
@@ -264,32 +290,38 @@ def on_intent(intent_request, session):
     # Dispatch to your skill's intent handlers
     session_attributes = session['attributes']
     try:
-        if  intent_name == "StartOrderIntent":
-            return start_order_session(intent, session)
-
-        if  intent_name == "QueryIntent":
-            return reply_query_session(intent, session)
-        if  intent_name == "FinishIntent":
-            return handle_order_end_request(intent, session)
-        if  intent_name == "PayIntent":
-            return pay_session(intent, session)
-
-        if session_attributes['status'] == 1: # after start ordering
+        if session_attributes['status'] == 'wait_for_name': 
             if intent_name == 'StartOrderIntent':
-                return start_order_session(intent, session) #repeat if start ordering is asked again
+                return start_order_session(intent, session) 
             elif intent_name == "MyNameIsIntent":
-                return set_usr_in_session(intent, session) #after my name is ..., then status is 2
-        if session_attributes['status'] == 2:  #after my name is ...
+                return set_usr_in_session(intent, session) 
+        elif session_attributes['status'] == 'wait_for_order': 
             if intent_name == "MyNameIsIntent":
                 return set_usr_in_session(intent, session) #repeat if new name
             elif intent_name == "MakeOrderIntent":
                 return set_order_in_session(intent,session)
-        if session_attributes['status'] == 3:  #after my name is ...
+        elif session_attributes['status'] == 'order_set':  #after my name is ...
             if intent_name == "MakeOrderIntent":
                 return set_order_in_session(intent,session)
-        if session_attributes['status'] == -3:
+        elif session_attributes['status'] == 'for_steak':
             if intent_name == 'SteakIntent':
                 return set_steak_in_session(intent,session)
+        elif session_attributes['status'] == 'in_comment':
+            if intent_name == 'CommentIntent':
+                return comment_session(intent,session)
+
+
+        if  intent_name == "StartOrderIntent":
+            return start_order_session(intent, session)
+        elif  intent_name == "QueryIntent":
+            return reply_query_session(intent, session)
+        elif  intent_name == "FinishIntent":
+            return handle_order_end_request(intent, session)
+        elif  intent_name == "PayIntent":
+            return pay_session(intent, session)
+
+
+
     except ValueError:
         return fail_session(intent,session)
 

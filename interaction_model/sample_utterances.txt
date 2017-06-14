@@ -39,3 +39,9 @@ SteakIntent I want {SteakValue}
 
 FinishIntent We have finished our order
 FinishIntent That is all
+PayIntent Can we have the bill
+PayIntent Can we pay the bill
+PayIntent Can we pay please
+PayIntent Bill please
+CommentIntent It is {commentStr}
+CommentIntent It tastes {commentStr}
