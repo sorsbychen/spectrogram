@@ -11,15 +11,15 @@ http://amzn.to/1LGWsLG
 from __future__ import print_function
 import urllib2
 
-menu = ['Smoked Haddock Fish Cakes',
-        'Chicken & Mushroom Risotto',
-        'Mushroom Pasta',
-        'Roasted Salmon Fillet',
-        'Jumbo Hot Dog',
-        'Premium Fresh Rib-Eye Steak',
-        'Fajita Chicken Wings',
-        'House salad',
-        'American style burger']
+menu = {"smoked haddock fish cakes": "There are 155 calories in a 1 cake serving of  Smoked Haddock Fish Cakes",
+            "chicken and mushroom risotto": "Calories per serving of Chicken and mushroom risotto are 150 calories of risotto 137 calories of Chicken Breast. In total 287 calories.",
+            "mushroom pasta": "Calories per serving of Mushroom Pasta are 200 calories of Pasta 65 calories of Cream of Mushroom Soup. In total 265 calories.",
+            "roasted salmon fillet": "There are 157 calories in each serving of the Roasted Salmon Fillet.",
+            "jumbo hot dog": "There are 240 calories in each serving of Jumbo Hot Dog",
+            "premium fresh rib-eye steak": "There are 585 calories in each serving of the premium fresh rib-eye steak",
+            "fajita chicken wings": "There are 430 calories in each serving of the Fajita Chicken Wings",
+            "house salad": "There are 40 calories in each serving of the house salad",
+            "american style burger": "There are 255 calories in each serving of the american style burger"}   
 
 
 def make_order(table, name, order, remark):
@@ -113,15 +113,25 @@ def set_order_in_session(intent, session):
 
     order_name_str = intent['slots']['Food']['value']
     usr_name_str = session_attributes['usr']
-    session_attributes['order'] = order_name_str
-    session_attributes['info'].append([usr_name_str,order_name_str])
 
-    speech_output = "Sure, a " + order_name_str + " for " + usr_name_str
-    if 'steak' in order_name_str or 'Steak' in order_name_str:
-        speech_output = speech_output + '. Hi, '+ usr_name_str + ', how do you like your steak done?'
-        session_attributes['status'] = 'for_steak'        
+    k_flg = 0
+    for iorder in menu.keys():
+        if order_name_str in iorder:
+            k_flg = 1
+            break
 
-    make_order('01', session_attributes['usr'], session_attributes['order'], '')
+    if k_flg:
+        session_attributes['order'] = iorder
+        session_attributes['info'].append([usr_name_str,iorder])
+        speech_output = "Sure, a " + iorder + " for " + usr_name_str
+        if 'steak' in iorder or 'Steak' in iorder:
+            speech_output = speech_output + '. Hi, '+ usr_name_str + ', how do you like your steak done?'
+            session_attributes['status'] = 'for_steak'        
+
+        make_order('01', session_attributes['usr'], session_attributes['order'], '')
+    else:
+        speech_output = "sorry we do not have this food. Could you please change another one?"
+        session_attributes['status'] = 'wait_for_order'
 
     reprompt_text = 'sorry I cannot recognize you.'
 
@@ -184,8 +194,14 @@ def reply_query_session(intent, session):
 
     order_name_str = intent['slots']['Food']['value']
 
-    if order_name_str == 'mushroom pasta':
-        speech_output = 'Calories per serving of mushroom pasta: 200 calories of Pasta, 65 calories of Cream of Mushroom Soup. In total 265 calories.'
+    k_flg = 0
+    for iorder in menu.keys():
+        if order_name_str in iorder:
+            k_flg = 1
+            break
+
+    if k_flg:
+        speech_output = menu[iorder]
     else:
         speech_output = 'Sorry, I have no idea.'
 
@@ -221,7 +237,7 @@ def pay_session(intent, session):
     session_attributes['comment_id'] = 0
     session_attributes['status'] = 'in_comment'
     info_all = session_attributes['info']
-    speech_output = speech_output + session_attributes['info'][0][1] + ', How do you like your ' + session_attributes['info'][0][1] + '?'
+    speech_output = speech_output + ' ' + session_attributes['info'][0][0] + ', How do you like your ' + session_attributes['info'][0][1] + '?'
     # session_attributes['comment_id'] = session_attributes['comment_id']+1
 
     # Setting this to true ends the session and exits the skill.
