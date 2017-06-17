@@ -1,0 +1,18 @@
+get the bill
+
+{
+  "intents": [
+    {
+      "intent": "CommentIntent",
+      "slots": [
+        {
+          "name": "commentStr",
+          "type": "LIST_OF_COMMENT"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
