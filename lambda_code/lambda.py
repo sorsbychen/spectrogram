@@ -10,16 +10,26 @@ http://amzn.to/1LGWsLG
 
 from __future__ import print_function
 import urllib2
+import string,ast
 
-menu = {"smoked haddock fish cakes": "There are 155 calories in a 1 cake serving of  Smoked Haddock Fish Cakes",
-            "chicken and mushroom risotto": "Calories per serving of Chicken and mushroom risotto are 150 calories of risotto 137 calories of Chicken Breast. In total 287 calories.",
-            "mushroom pasta": "Calories per serving of Mushroom Pasta are 200 calories of Pasta 65 calories of Cream of Mushroom Soup. In total 265 calories.",
-            "roasted salmon fillet": "There are 157 calories in each serving of the Roasted Salmon Fillet.",
-            "jumbo hot dog": "There are 240 calories in each serving of Jumbo Hot Dog",
-            "premium fresh rib-eye steak": "There are 585 calories in each serving of the premium fresh rib-eye steak",
-            "fajita chicken wings": "There are 430 calories in each serving of the Fajita Chicken Wings",
-            "house salad": "There are 40 calories in each serving of the house salad",
-            "american style burger": "There are 255 calories in each serving of the american style burger"}   
+menu = {"Smoked Haddock Fish Cakes": "There are 155 calories in a 1 cake serving of Smoked Haddock Fish Cakes",
+            "Chicken and Mushroom Risotto": "Calories per serving of Chicken and mushroom risotto are 150 calories of risotto 137 calories of Chicken Breast. In total 287 calories.",
+            "Mushroom Pasta": "Calories per serving of Mushroom Pasta are 200 calories of Pasta 65 calories of Cream of Mushroom Soup. In total 265 calories.",
+            "Roasted Salmon Fillet": "There are 157 calories in each serving of the Roasted Salmon Fillet.",
+            "Jumbo Hot Dog": "There are 240 calories in each serving of Jumbo Hot Dog",
+            "Premium Fresh Rib-Eye Steak": "There are 585 calories in each serving of the premium fresh rib-eye steak",
+            "Fajita Chicken Wings": "There are 430 calories in each serving of the Fajita Chicken Wings",
+            "House Salad": "There are 40 calories in each serving of the house salad",
+            "American Style Burger": "There are 255 calories in each serving of the american style burger"}
+price = {"Smoked Haddock Fish Cakes":15,
+        "Roasted Salmon Fillet":20,
+        "House Salad":11,
+        "Premium Fresh Rib-Eye Steak":30,
+        "Chicken and Mushroom Risotto":20,
+        "Mushroom Pasta":15,
+        "Fajita Chicken Wings":11,
+        "Jumbo Hot Dog":11,
+        "American Style Burger":11}
 
 
 def make_order(table, name, order, remark):
@@ -28,7 +38,10 @@ def make_order(table, name, order, remark):
     remark = remark.replace(' ','%20')
     response = urllib2.urlopen('http://183.175.14.209:6228/order/%s/%s/%s/%s/'%(table, name, order, remark))  
 
-
+def upload_order(info):
+    info_str = str(info)
+    info_str = info_str.replace(' ','%20')
+    response = urllib2.urlopen('http://183.175.14.209:6228/add_info/%s'%info_str)
 
 # --------------- Helpers that build all of the responses ----------------------
 
@@ -82,8 +95,6 @@ def get_welcome_response():
         card_title, speech_output, reprompt_text, should_end_session))
 
 
-def create_favorite_color_attributes(favorite_color):
-    return {"favoriteColor": favorite_color}
 
 
 def set_usr_in_session(intent, session):
@@ -116,19 +127,20 @@ def set_order_in_session(intent, session):
 
     k_flg = 0
     for iorder in menu.keys():
-        if order_name_str in iorder:
+        if order_name_str in iorder.lower():
             k_flg = 1
             break
 
     if k_flg:
         session_attributes['order'] = iorder
-        session_attributes['info'].append([usr_name_str,iorder])
+        order_price = price[iorder]
+        session_attributes['info'].append([usr_name_str,iorder,order_price])
         speech_output = "Sure, a " + iorder + " for " + usr_name_str
         if 'steak' in iorder or 'Steak' in iorder:
             speech_output = speech_output + '. Hi, '+ usr_name_str + ', how do you like your steak done?'
             session_attributes['status'] = 'for_steak'        
 
-        make_order('01', session_attributes['usr'], session_attributes['order'], '')
+        make_order('01', session_attributes['usr'], session_attributes['order'], '')        
     else:
         speech_output = "sorry we do not have this food. Could you please change another one?"
         session_attributes['status'] = 'wait_for_order'
@@ -196,7 +208,7 @@ def reply_query_session(intent, session):
 
     k_flg = 0
     for iorder in menu.keys():
-        if order_name_str in iorder:
+        if order_name_str in iorder.lower():
             k_flg = 1
             break
 
@@ -223,6 +235,7 @@ def handle_order_end_request(intent, session):
     speech_output = "Good choices. Your food will be ready in 10 minutes."
     session_attributes = session['attributes']
     session_attributes['status'] = 'init'
+    upload_order(session_attributes['info'])
 
     # Setting this to true ends the session and exits the skill.
     should_end_session = False
@@ -269,19 +282,6 @@ def comment_session(intent,session):
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
-def handle_session_end_request(intent, session):
-    card_title = "Session Ended"
-    speech_output = "Good choices. Your food will be ready in 10 minutes."
-    session_attributes = session['attributes']
-    session_attributes['status'] = 'init'
-
-    # Setting this to true ends the session and exits the skill.
-    should_end_session = True
-    return build_response({}, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
-
-
-
 
 def on_launch(launch_request, session):
     """ Called when the user launches the skill without specifying what they
@@ -322,9 +322,9 @@ def on_intent(intent_request, session):
         elif session_attributes['status'] == 'for_steak':
             if intent_name == 'SteakIntent':
                 return set_steak_in_session(intent,session)
-        elif session_attributes['status'] == 'in_comment':
-            if intent_name == 'CommentIntent':
-                return comment_session(intent,session)
+        # elif session_attributes['status'] == 'in_comment':
+        #     if intent_name == 'CommentIntent':
+        #         return comment_session(intent,session)
 
 
         if  intent_name == "StartOrderIntent":
@@ -333,8 +333,8 @@ def on_intent(intent_request, session):
             return reply_query_session(intent, session)
         elif  intent_name == "FinishIntent":
             return handle_order_end_request(intent, session)
-        elif  intent_name == "PayIntent":
-            return pay_session(intent, session)
+        # elif  intent_name == "PayIntent":
+        #     return pay_session(intent, session)
 
 
 
