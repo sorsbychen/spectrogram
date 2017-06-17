@@ -22,6 +22,10 @@ medium well
 well
 well-done
 
+LIST_OF_COMMENT:
+Yes
+No
+
 2. CaloriesDictionary
     CaloriesOfFood={
         	"smoked haddock fish cakes": "There are 155 calories in a 1 cake serving of  Smoked Haddock Fish Cakes",
