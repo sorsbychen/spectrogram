@@ -17,14 +17,14 @@ menu = {"Smoked Haddock Fish Cakes": "There are 155 calories in a 1 cake serving
             "Mushroom Pasta": "Calories per serving of Mushroom Pasta are 200 calories of Pasta 65 calories of Cream of Mushroom Soup. In total 265 calories.",
             "Roasted Salmon Fillet": "There are 157 calories in each serving of the Roasted Salmon Fillet.",
             "Jumbo Hot Dog": "There are 240 calories in each serving of Jumbo Hot Dog",
-            "Premium Fresh Rib-Eye Steak": "There are 585 calories in each serving of the premium fresh rib-eye steak",
+            "Premium Fresh Rib Eye Steak": "There are 585 calories in each serving of the premium fresh rib-eye steak",
             "Fajita Chicken Wings": "There are 430 calories in each serving of the Fajita Chicken Wings",
             "House Salad": "There are 40 calories in each serving of the house salad",
             "American Style Burger": "There are 255 calories in each serving of the american style burger"}
 price = {"Smoked Haddock Fish Cakes":15,
         "Roasted Salmon Fillet":20,
         "House Salad":11,
-        "Premium Fresh Rib-Eye Steak":30,
+        "Premium Fresh Rib Eye Steak":30,
         "Chicken and Mushroom Risotto":20,
         "Mushroom Pasta":15,
         "Fajita Chicken Wings":11,
@@ -98,15 +98,15 @@ def get_welcome_response():
 
 
 def set_usr_in_session(intent, session):
-
     card_title = intent['name']
     session_attributes = session['attributes']
     session_attributes['status'] = 'wait_for_order'
 
     should_end_session = False
 
+
     usr_name_str = intent['slots']['Name']['value']
-    speech_output = "Hello," + usr_name_str + ". What can get for you?"     
+    speech_output = "Hello," + usr_name_str + ". What can I get for you?"     
     session_attributes['usr'] = usr_name_str
 
     reprompt_text = speech_output
@@ -303,6 +303,8 @@ def on_intent(intent_request, session):
     intent = intent_request['intent']
     intent_name = intent_request['intent']['name']
 
+
+
     # Dispatch to your skill's intent handlers
     session_attributes = session['attributes']
     try:
@@ -310,18 +312,26 @@ def on_intent(intent_request, session):
             if intent_name == 'StartOrderIntent':
                 return start_order_session(intent, session) 
             elif intent_name == "MyNameIsIntent":
-                return set_usr_in_session(intent, session) 
+                return set_usr_in_session(intent, session)
+            else:
+                return fail_session(event['request'], event['session'])
         elif session_attributes['status'] == 'wait_for_order': 
             if intent_name == "MyNameIsIntent":
                 return set_usr_in_session(intent, session) #repeat if new name
             elif intent_name == "MakeOrderIntent":
                 return set_order_in_session(intent,session)
+            else:
+                return fail_session(event['request'], event['session'])
         elif session_attributes['status'] == 'order_set':  #after my name is ...
             if intent_name == "MakeOrderIntent":
                 return set_order_in_session(intent,session)
+            else:
+                return fail_session(event['request'], event['session'])
         elif session_attributes['status'] == 'for_steak':
             if intent_name == 'SteakIntent':
                 return set_steak_in_session(intent,session)
+            else:
+                return fail_session(event['request'], event['session'])
         # elif session_attributes['status'] == 'in_comment':
         #     if intent_name == 'CommentIntent':
         #         return comment_session(intent,session)
@@ -333,12 +343,14 @@ def on_intent(intent_request, session):
             return reply_query_session(intent, session)
         elif  intent_name == "FinishIntent":
             return handle_order_end_request(intent, session)
+        else:
+            return fail_session(event['request'], event['session'])
         # elif  intent_name == "PayIntent":
         #     return pay_session(intent, session)
 
 
 
-    except ValueError:
+    except:
         return fail_session(intent,session)
 
 def on_session_ended(session_ended_request, session):
@@ -382,5 +394,5 @@ def lambda_handler(event, context):
             return response_r
         elif event['request']['type'] == "SessionEndedRequest":
             return on_session_ended(event['request'], event['session'])
-    except ValueError:
+    except:
         return fail_session(event['request'], event['session'])
