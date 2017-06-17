@@ -38,10 +38,27 @@ SteakIntent I would like {SteakValue}
 SteakIntent I want {SteakValue}
 
 FinishIntent We have finished our order
+FinishIntent Finish order
+FinishIntent Order finished
+FinishIntent Order Accomplished
+FinishIntent I have finished my order
 FinishIntent That is all
+FinishIntent That's everything
+FinishIntent This is everything
+FinishIntent This is all for us
+FinishIntent This is all for today
 PayIntent Can we have the bill
 PayIntent Can we pay the bill
 PayIntent Can we pay please
 PayIntent Bill please
+PayIntent  Can I have my bill? 
+PayIntent  Can we have the bill please.
+PayIntent I am ready for my bill.
+PayIntent I am ready to pay the bill.
+PayIntent I would like my check please.
 CommentIntent It is {commentStr}
 CommentIntent It tastes {commentStr}
+CommentIntent I like the {commentStr}
+CommentIntent I love the {commentStr}
+CommentIntent I don't like the {commentStr}
+CommentIntent I dislike the {commentStr}
