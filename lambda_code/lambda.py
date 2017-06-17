@@ -232,13 +232,13 @@ def on_session_started(session_started_request, session):
 
 def handle_order_end_request(intent, session):
     card_title = "Order Ended"
-    speech_output = "Good choices. Your food will be ready in 10 minutes."
+    speech_output = "Good choices. Your food will be ready in 10 minutes. After the meal, if you want to pay the bill, just say, get the bill. See you later."
     session_attributes = session['attributes']
     session_attributes['status'] = 'init'
     upload_order(session_attributes['info'])
 
     # Setting this to true ends the session and exits the skill.
-    should_end_session = False
+    should_end_session = True
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
 
