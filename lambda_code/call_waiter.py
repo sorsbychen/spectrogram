@@ -54,7 +54,7 @@ def get_welcome_response():
     response = urllib2.urlopen('http://183.175.14.209:6228/waiter/')
 
     reprompt_text = speech_output
-    should_end_session = False
+    should_end_session = True
 
     return build_response({}, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
