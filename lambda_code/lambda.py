@@ -83,10 +83,10 @@ def get_welcome_response():
 
     session_attributes = {'status':'init','info':[],'usr':'xxx','order':'xxx','comment_id':0,'comment_end':0}
     card_title = "Welcome"
-    speech_output = "Welcome to the BP restaurant. My name is Alexa. "\
-                    "I am your waiter today. Let me tell you about our specials today. "\
-                    " We have a miso-glazed Chilean Sea Bass, with a side of mashed sweet potatoes, and sauteed spinach. "\
-                    "You can ask me questions about the menu. To order your food, you just need to say, Alexa, start ordering."
+    speech_output = "Welcome to the BP restaurant. My name is Alexa. "#\
+                    #"I am your waiter today. Let me tell you about our specials today. "\
+                    #" We have a miso-glazed Chilean Sea Bass, with a side of mashed sweet potatoes, and sauteed spinach. "\
+                    #"You can ask me questions about the menu. To order your food, you just need to say, Alexa, start ordering."
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = speech_output
@@ -232,7 +232,7 @@ def on_session_started(session_started_request, session):
 
 def handle_order_end_request(intent, session):
     card_title = "Order Ended"
-    speech_output = "Good choices. Your food will be ready in 10 minutes. After the meal, if you want to pay the bill, just say, get the bill. See you later."
+    speech_output = "Good choices. Your food will be ready in 10 minutes. After the meal, if you want to pay the bill, just say, Alexa, get the bill. See you later."
     session_attributes = session['attributes']
     session_attributes['status'] = 'init'
     upload_order(session_attributes['info'])
@@ -322,18 +322,18 @@ def on_intent(intent_request, session):
                 return set_order_in_session(intent,session)
             else:
                 return fail_session(event['request'], event['session'])
-        elif session_attributes['status'] == 'order_set':  #after my name is ...
-            if intent_name == "MakeOrderIntent":
-                return set_order_in_session(intent,session)
-            else:
-                return fail_session(event['request'], event['session'])
+        #elif session_attributes['status'] == 'order_set':  #after my name is ...
+        #    if intent_name == "MakeOrderIntent":
+        #        return set_order_in_session(intent,session)
+        #    else:
+        #        return fail_session(event['request'], event['session'])
         elif session_attributes['status'] == 'for_steak':
             if intent_name == 'SteakIntent':
                 return set_steak_in_session(intent,session)
             else:
                 return fail_session(event['request'], event['session'])
-        else:
-            return fail_session(event['request'], event['session'])
+        #else:
+        #    return fail_session(event['request'], event['session'])
         # elif session_attributes['status'] == 'in_comment':
         #     if intent_name == 'CommentIntent':
         #         return comment_session(intent,session)
