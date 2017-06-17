@@ -54,7 +54,7 @@ def get_welcome_response():
     card_title = "Welcome"
     session_attributes['status'] = 'in_comment'
     speech_output = 'Sure. your total bill is ' + str(session_attributes['bill_payment']) +' pounds' + \
-                    'please swipe your card. After paying, you can leave your comments to me.'
+                    'please scan the QR code. You also can leave your comments to me now. You can say My comment is that I like the food'
                     
 	# If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
@@ -84,7 +84,9 @@ def comment_session(intent, session):
     my_comment = intent['slots']['commentStr']['value']
 
     if my_comment == 'no':
-        speech_output = 'You have finished all the comments. I am delighted to serve you today.'
+        speech_output = 'You have finished all the comments. I am delighted to serve you today.'\
+                    "Thank you for trying BP restaurant!"\
+                    "Hope to see you next time! Bye!"
         #send the message
         should_end_session = True
     else:
