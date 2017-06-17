@@ -332,6 +332,8 @@ def on_intent(intent_request, session):
                 return set_steak_in_session(intent,session)
             else:
                 return fail_session(event['request'], event['session'])
+        else:
+            return fail_session(event['request'], event['session'])
         # elif session_attributes['status'] == 'in_comment':
         #     if intent_name == 'CommentIntent':
         #         return comment_session(intent,session)
