@@ -1,21 +1,20 @@
 Bert: Open Spectrogram
 
 Part A
-A: Welcome to the BP restaurant. My name is Alexa. I am your waiter today.
-You can ask me questions about the menu. To order your food, you just need to say “Alexa, start ordering”.
- 
-Xiaofei: Alexa, start ordering.
-A: Ok. May I know your name please?
-Xiaofei: My name is Xiaofei. 
-A: Hello I. What can I get for you?
-Xiaofei: Can I have the burger?
-A: Sure. An American style burger for xiaofei.
- 
+A: Welcome to the BP restaurant. I am your waiter today.
+You can ask me questions about the menu. To order your food, just say “Alexa, start ordering”.
+
+Xue: Alexa, start ordering.
+A:Ok, May I know your name please?
+Xue: My name is Xuewei.
+A:Hello Xuewei, what can I get for you?
+Xue:I would like to have the Steak.
+A:Ok. A Premium Fresh Rib-Eye Steak for Hui. Hui, how do you like your steak done?
+Xue: Medium. 
+A:Ok. Medium it is. 
+
 Sorsby: Alexa, how many calories is in the mushroom pasta?
-A: Calories per serving of mushroom pasta:
-200 calories of Pasta
-65 calories of Cream of Mushroom Soup.
-In total 265 calories.
+A: Calories per serving of Mushroom Pasta are 265 calories
  
 Sorsby: Alexa, start ordering.
 A:Ok. May I know your name please?
@@ -24,34 +23,26 @@ A:Hello Sorsby. What can I get for you?
 Sorsby: May I have a mushroom pasta ?
 A: Sure. A mushroom pasta for Sorsby.
  
-Hui: Alexa, start ordering.
-A:Ok, May I know your name please?
-Hui: My name is Hui.
-A:Hello Hui, what can I get for you?
-Hui:I would like to have the Steak.
-A:Ok. A Premium Fresh Rib-Eye Steak for Hui. Hui, how do you like your steak done?
-Hui: Medium. 
-A:Ok. Medium it is. 
-Hui: Alexa, finish ordering.
+Sorsby: Alexa, finish ordering.
+
 A: ...
+
 Part B
 Waiter serve the foods and the ketchup. 
-Waiter: Burger for xiaofei. 
-	 Mushroom pasta for sorsby. 
-	 Steak for Hui. 
+Waiter:  Mushroom pasta for sorsby. 
+	 Steak for Xuewei. 
  
 Sorsby:Alexa, call the waiter
 A: Ok. The waiter is coming.
  
 Waiter: Hello. What can I do for you?
-Sorsby: May I have some ketchup please? 
-Waiter: Sure. Just a sec. 
-	 Ketchup for you.
+Sorsby: Please remove the plate. 
+Waiter: Oh Sorry.
  
  
  
 Part C
-Sorsby:Alexa, get the bill
+Xue:Alexa, get the bill
 A: Sure. your total bill is … Please scan the QR code. You also can leave your comments to me now.
 Sorsby: We enjoyed the food and your service.
 A: Thank you. Do you have more comments?
