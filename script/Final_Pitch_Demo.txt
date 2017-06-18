@@ -1,3 +1,5 @@
+Bert: Open Spectrogram
+
 Part A
 A: Welcome to the BP restaurant. My name is Alexa. I am your waiter today.
 You can ask me questions about the menu. To order your food, you just need to say “Alexa, start ordering”.
