@@ -2,7 +2,6 @@
 This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
 The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well
 as testing instructions are located at http://amzn.to/1LzFrj6
-
 For additional samples, visit the Alexa Skills Kit Getting Started guide at
 http://amzn.to/1LGWsLG
 """
@@ -83,10 +82,9 @@ def get_welcome_response():
 
     session_attributes = {'status':'init','info':[],'usr':'xxx','order':'xxx','comment_id':0,'comment_end':0}
     card_title = "Welcome"
-    speech_output = "Welcome to the BP restaurant. My name is Alexa. "#\
-                    #"I am your waiter today. Let me tell you about our specials today. "\
-                    #" We have a miso-glazed Chilean Sea Bass, with a side of mashed sweet potatoes, and sauteed spinach. "\
-                    #"You can ask me questions about the menu. To order your food, you just need to say, Alexa, start ordering."
+    speech_output = "Welcome to the BP restaurant. "\
+                    "I am your waiter today. today's special is Chicken and Mushroom Risotto. "\
+                    "You can ask me questions about the menu. To order your food, just say, Alexa, start ordering."
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = speech_output
@@ -357,7 +355,6 @@ def on_intent(intent_request, session):
 
 def on_session_ended(session_ended_request, session):
     """ Called when the user ends the session.
-
     Is not called when the skill returns should_end_session=true
     """
     print("on_session_ended requestId=" + session_ended_request['requestId'] +

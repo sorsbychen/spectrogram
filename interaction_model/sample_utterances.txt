@@ -4,6 +4,8 @@ MakeOrderIntent I would like a {Food}
 MakeOrderIntent May I have {Food}
 MakeOrderIntent I'd like to have {Food}
 MakeOrderIntent {Food}
+MakeOrderIntent I want a {Food}
+MakeOrderIntent i need a {Food}
 
 MyNameIsIntent My name is {Name}
 MyNameIsIntent I am {Name}
@@ -24,6 +26,7 @@ QueryIntent How much is the calories in the {Food}
 QueryIntent how much calories is it in the {Food}
 QueryIntent how many calories in the {Food}
 QueryIntent how much heat is it in the {Food}
+
 
 SteakIntent I want it {SteakValue}
 SteakIntent {SteakValue}
