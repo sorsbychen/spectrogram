@@ -1,0 +1,17 @@
+Intent Schema
+{
+  "intents": [
+    {
+      "intent": "MyNameIsIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
+
+Custom Slot Types (Optional)
+Пе
+
+Sample Utterances
+MyNameIsIntent My name is
