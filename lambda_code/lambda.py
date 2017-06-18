@@ -171,8 +171,7 @@ def start_order_session(intent, session):
     session_attributes = session['attributes']
     should_end_session = False
 
-
-    speech_output = "Thank you. May I have your name please?"
+    speech_output = random.choices(['Thank you. May I have your name please?','Hi, what is your name?','Your name please?','Can I know your name?'])
     reprompt_text = 'Sorry, I cannot understand your speech.'
 
     session_attributes['status'] = 'wait_for_name'
