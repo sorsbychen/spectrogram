@@ -47,14 +47,23 @@ def get_welcome_response():
     """ If we wanted to initialize the session to have some attributes we could
     add those here
     """
-    session_attributes = {'status':'init','bill_payment':0,'comment':''}
+    session_attributes = {'status':'init','bill_payment':0.0,'comment':''}
     total = urllib2.urlopen('http://183.175.14.209:6228/call_pay/').read()
-    session_attributes['bill_payment'] = total
-
+    
+    if float(total)==-1:
+        card_title = "Welcome"
+        session_attributes['status'] = 'in_comment'
+        speech_output = 'Sorry, you have no order now, please order first!'
+        reprompt_text = speech_output
+        should_end_session = True
+        return build_response(session_attributes, build_speechlet_response(
+            card_title, speech_output, reprompt_text, should_end_session))
+         
     card_title = "Welcome"
     session_attributes['status'] = 'in_comment'
-    speech_output = 'Sure. your total bill is ' + str(session_attributes['bill_payment']) +' pounds' + \
-                    'please scan the QR code. You also can leave your comments to me now. You can say My comment is that I like the food'
+    speech_output = 'Sure. your total bill is ' + str(total) +' pounds' + \
+                    'please scan the QR code. You also can leave your comments to me now. You can say My comment is that I like the food. '\
+                    'do you have any comments?'
                     
 	# If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
@@ -84,7 +93,7 @@ def comment_session(intent, session):
     my_comment = intent['slots']['commentStr']['value']
 
     if my_comment == 'no':
-        speech_output = 'You have finished all the comments. I am delighted to serve you today.'\
+        speech_output = 'You have finished all the comments. I am delighted to serve you today. '\
                     "Thank you for trying BP restaurant!"\
                     "Hope to see you next time! Bye!"
         #send the message
