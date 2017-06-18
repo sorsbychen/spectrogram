@@ -47,15 +47,6 @@
         }
       ],
       "intent": "SteakIntent"
-    },
-    {
-      "slots": [
-        {
-          "name": "commentStr",
-          "type": "LIST_OF_COMMENT"
-        }
-      ],
-      "intent": "CommentIntent"
     }
   ]
 }
@@ -103,5 +94,3 @@ SteakIntent I like {SteakValue}
 SteakIntent I'd like {SteakValue}
 SteakIntent I would like {SteakValue}
 SteakIntent I want {SteakValue}
-CommentIntent It is {commentStr}
-CommentIntent It tastes {commentStr}

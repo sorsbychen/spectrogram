@@ -19,9 +19,6 @@
       "intent": "FinishIntent"
     },
     {
-      "intent": "WaiterIntent"
-    },
-    {
       "intent": "PayIntent"
     },
     {
@@ -50,15 +47,6 @@
         }
       ],
       "intent": "SteakIntent"
-    },
-    {
-      "slots": [
-        {
-          "name": "commentStr",
-          "type": "LIST_OF_COMMENT"
-        }
-      ],
-      "intent": "CommentIntent"
     }
   ]
 }
