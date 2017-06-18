@@ -7,6 +7,7 @@ MyNameIsIntent {Name}
 StartOrderIntent Start ordering
 FinishIntent We have finished our order
 FinishIntent That is all
+FinishIntent Finish ordering
 PayIntent Can we have the bill
 PayIntent Can we pay the bill
 PayIntent Can we pay please
@@ -16,6 +17,10 @@ MakeOrderIntent Could I have the {Food}
 MakeOrderIntent I would like a {Food}
 MakeOrderIntent May I have {Food}
 MakeOrderIntent I'd like to have {Food}
+MakeOrderIntent I want to eat a {Food}
+MakeOrderIntent I want to eat the {Food}
+MakeOrderIntent I want the {Food}
+MakeOrderIntent I want a {Food}
 MakeOrderIntent {Food}
 QueryIntent What is the calories in {Food}
 QueryIntent How much is the calories in {Food}

@@ -2,6 +2,7 @@
 This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
 The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well
 as testing instructions are located at http://amzn.to/1LzFrj6
+
 For additional samples, visit the Alexa Skills Kit Getting Started guide at
 http://amzn.to/1LGWsLG
 """
@@ -13,7 +14,7 @@ import string,ast
 
 menu = {"Smoked Haddock Fish Cakes": "There are 155 calories in a 1 cake serving of Smoked Haddock Fish Cakes",
             "Chicken and Mushroom Risotto": "Calories per serving of Chicken and mushroom risotto are 150 calories of risotto 137 calories of Chicken Breast. In total 287 calories.",
-            "Mushroom Pasta": "Calories per serving of Mushroom Pasta are 200 calories of Pasta 65 calories of Cream of Mushroom Soup. In total 265 calories.",
+            "Mushroom Pasta": "Calories per serving of Mushroom Pasta are 265 calories.",
             "Roasted Salmon Fillet": "There are 157 calories in each serving of the Roasted Salmon Fillet.",
             "Jumbo Hot Dog": "There are 240 calories in each serving of Jumbo Hot Dog",
             "Premium Fresh Rib Eye Steak": "There are 585 calories in each serving of the premium fresh rib-eye steak",
@@ -82,9 +83,7 @@ def get_welcome_response():
 
     session_attributes = {'status':'init','info':[],'usr':'xxx','order':'xxx','comment_id':0,'comment_end':0}
     card_title = "Welcome"
-    speech_output = "Welcome to the BP restaurant. "\
-                    "I am your waiter today. today's special is Chicken and Mushroom Risotto. "\
-                    "You can ask me questions about the menu. To order your food, just say, Alexa, start ordering."
+    speech_output = "Welcome to the BP restaurant. My name is Alexa. I am your waiter today. You can ask me questions about the menu. To order your food, just say, Alexa, start ordering."
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = speech_output
@@ -170,6 +169,7 @@ def start_order_session(intent, session):
     card_title = intent['name']
     session_attributes = session['attributes']
     should_end_session = False
+
 
     speech_output = random.choices(['Thank you. May I have your name please?','Hi, what is your name?','Your name please?','Can I know your name?'])
     reprompt_text = 'Sorry, I cannot understand your speech.'
@@ -354,6 +354,7 @@ def on_intent(intent_request, session):
 
 def on_session_ended(session_ended_request, session):
     """ Called when the user ends the session.
+
     Is not called when the skill returns should_end_session=true
     """
     print("on_session_ended requestId=" + session_ended_request['requestId'] +
