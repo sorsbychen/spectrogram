@@ -11,6 +11,7 @@ http://amzn.to/1LGWsLG
 from __future__ import print_function
 import urllib2
 import string,ast
+import random
 
 menu = {"Smoked Haddock Fish Cakes": "There are 155 calories in a 1 cake serving of Smoked Haddock Fish Cakes",
             "Chicken and Mushroom Risotto": "Calories per serving of Chicken and mushroom risotto are 150 calories of risotto 137 calories of Chicken Breast. In total 287 calories.",
@@ -171,7 +172,7 @@ def start_order_session(intent, session):
     should_end_session = False
 
 
-    speech_output = random.choices(['Thank you. May I have your name please?','Hi, what is your name?','Your name please?','Can I know your name?'])
+    speech_output = random.choice(['Thank you. May I have your name please?','Hi, what is your name?','Your name please?','Can I know your name?'])
     reprompt_text = 'Sorry, I cannot understand your speech.'
 
     session_attributes['status'] = 'wait_for_name'
