@@ -62,7 +62,7 @@ def get_welcome_response():
     card_title = "Welcome"
     session_attributes['status'] = 'in_comment'
     speech_output = 'Sure. your total bill is ' + str(total) +' pounds' + \
-                    'please scan the QR code. You also can leave your comments to me now. You can say My comment is that I like the food. '\
+                    'please scan the QR code. You also can leave your comments to me now. '\
                     'do you have any comments?'
                     
 	# If the user either does not reply to the welcome message or says something
@@ -94,7 +94,6 @@ def comment_session(intent, session):
 
     if my_comment == 'no':
         speech_output = 'You have finished all the comments. I am delighted to serve you today. '\
-                    "Thank you for trying BP restaurant!"\
                     "Hope to see you next time! Bye!"
         #send the message
         should_end_session = True
